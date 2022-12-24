@@ -2,50 +2,68 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="469dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="-2dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="-2dp">
 
         <WebView
             android:id="@+id/weatherIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"></WebView>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"></WebView>
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="169dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:layout_x="397dp"
             android:layout_y="97dp"
-            android:gravity="center"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="139dp"
-            android:layout_height="match_parent"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:layout_x="397dp"
             android:layout_y="97dp"
-            android:gravity="center"
-            android:text="TextView" />
+            android:gravity="center_horizontal|center_vertical"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/speed"
-            android:layout_width="97dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:layout_x="397dp"
             android:layout_y="97dp"
-            android:gravity="center"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

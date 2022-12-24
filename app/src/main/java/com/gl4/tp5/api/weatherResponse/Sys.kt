@@ -1,4 +1,4 @@
-package com.gl4.tp5
+package com.gl4.tp5.api.weatherResponse
 
 data class Sys(
     val country: String,

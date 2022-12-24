@@ -1,23 +1,22 @@
-package com.gl4.tp5
+package com.gl4.tp5.models
 
 import android.util.Log
 import retrofit2.Callback
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gl4.tp5.objects.RetrofitHelper
+import com.gl4.tp5.api.weatherResponse.WeatherResponse
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Query
 
 
 class MainViewModel : ViewModel() {
     val currentWeather = MutableLiveData<WeatherResponse>()
-    val currentForecasts = MutableLiveData<List<ForecastWeather>>()
     val weather : LiveData<WeatherResponse> = currentWeather
-    val Forecasts : LiveData<List<ForecastWeather>> = currentForecasts
+
     init {
         getweather("Tunis")
-        getWeatherForecast(34F,9F,16)
     }
     public fun getweather(ville : String){
         RetrofitHelper.retrofitService.getWeather(ville).enqueue(object :
@@ -26,8 +25,11 @@ class MainViewModel : ViewModel() {
                 call: Call<WeatherResponse>,
                 response: Response<WeatherResponse>
             ) {
+                println("before success")
                 if(response.isSuccessful) {
+                    println("on success")
                     currentWeather.value = response.body()
+                    println(currentWeather.value)
                 }
             }
 
@@ -37,26 +39,5 @@ class MainViewModel : ViewModel() {
 
 
         })
-    }
-
-    public fun getWeatherForecast(lat : Float, lon : Float , cnt : Int){
-        RetrofitHelper.retrofitService.getWeatherForecast(lat,lon,cnt).enqueue(
-            object : Callback<ForecastResponse>{
-                override fun onResponse(
-                    call: Call<ForecastResponse>,
-                    response: Response<ForecastResponse>
-                ) {
-                    if(response.isSuccessful) {
-                        println(response)
-                        currentForecasts.value = response.body()?.list
-                    }
-                }
-
-                override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
-                    Log.d("ONFAILURE2" , t.message.toString())
-                }
-
-            }
-        )
     }
 }

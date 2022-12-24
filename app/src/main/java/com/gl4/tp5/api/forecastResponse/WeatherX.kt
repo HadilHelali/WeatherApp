@@ -1,4 +1,4 @@
-package com.gl4.tp5
+package com.gl4.tp5.api.forecastResponse
 
 data class WeatherX(
     val description: String,

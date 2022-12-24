@@ -1,5 +1,6 @@
-package com.gl4.tp5
+package com.gl4.tp5.objects
 
+import com.gl4.tp5.api.WeatherAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

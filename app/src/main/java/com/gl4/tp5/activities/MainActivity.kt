@@ -1,4 +1,4 @@
-package com.gl4.tp5
+package com.gl4.tp5.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,17 +8,19 @@ import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.gl4.tp5.models.MainViewModel
+import com.gl4.tp5.api.weatherResponse.WeatherResponse
 import com.gl4.tp5.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMainBinding
-    private val model: MainViewModel by viewModels()
+
     val Ville_list = listOf("Tunis", "Mahdia", "Sousse")
     private var selectedVille : String = ""
-    private var lat : Float = 0.0F
-    private var lon : Float = 0.0F
 
     override fun onCreate(savedInstanceState: Bundle?) {
+         lateinit var binding : ActivityMainBinding
+         val model: MainViewModel by viewModels()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         // Create the observer which update the UI
+
         val weatherObserver = Observer<WeatherResponse> {
             binding.country.text = it.name
             println("---"+it.name)
@@ -54,9 +57,7 @@ class MainActivity : AppCompatActivity() {
             binding.Temp.text = it.main.temp.toString()+"°C"
             binding.humidity.text = "Humidity : "+it.main.humidity.toString()
             binding.pressure.text = "Pressure : "+it.main.pressure.toString()
-            binding.weatherImage.loadUrl("https://openweathermap.org/img/w/" + it.weather.get(0).icon + ".png")
-            lat = it.coord.lat
-            lon = it.coord.lon
+            binding.weatherImage.loadUrl("https://openweathermap.org/img/wn/" + it.weather.get(0).icon + "@4x.png")
         }
        model.weather.observe(this,weatherObserver)
     }
@@ -64,9 +65,6 @@ class MainActivity : AppCompatActivity() {
     fun GoToAc5(view: View) {
         val intent = Intent(this, FiveActivity::class.java )
         intent.putExtra("ville",selectedVille)
-        intent.putExtra("latt",lat)
-        intent.putExtra("lonn",lon)
-
         startActivity(intent)
     }
 }

@@ -1,4 +1,6 @@
-package com.gl4.tp5
+package com.gl4.tp5.api.forecastResponse
+
+import com.gl4.tp5.api.weatherResponse.Coord
 
 data class City(
     val coord: Coord,

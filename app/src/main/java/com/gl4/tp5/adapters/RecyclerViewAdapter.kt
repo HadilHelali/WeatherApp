@@ -1,26 +1,21 @@
-package com.gl4.tp5
+package com.gl4.tp5.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
-import android.widget.CheckBox
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gl4.tp5.databinding.RecyclerItemBinding
+import com.gl4.tp5.R
+import com.gl4.tp5.api.forecastResponse.ForecastResponse
+import com.gl4.tp5.api.forecastResponse.ForecastWeather
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class recyclerViewAdapter() : RecyclerView.Adapter<recyclerViewAdapter.ViewHolder>() {
+class recyclerViewAdapter(private val dataSet: ForecastResponse?) : RecyclerView.Adapter<recyclerViewAdapter.ViewHolder>() {
 
-    private var dataSet: List<ForecastWeather> = listOf()
-
-    public fun setDataSet(data: List<ForecastWeather>){
-        this.dataSet = data
-    }
-
+    private var data: MutableList<ForecastWeather>? = dataSet?.list as MutableList<ForecastWeather>?
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         val description: TextView
@@ -53,11 +48,16 @@ class recyclerViewAdapter() : RecyclerView.Adapter<recyclerViewAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.weatherIcon.loadUrl("https://openweathermap.org/img/w/" + dataSet[position].weather.get(0).icon + ".png")
-        holder.description.text = dataSet[position].weather.get(0).description
-        holder.date.text = getDateTime(dataSet[position].dt.toString())
-        holder.speed.text = dataSet[position].speed.toString()
+        print(data?.size)
+        holder.weatherIcon.loadUrl("https://openweathermap.org/img/w/" + data?.get(position)?.weather?.get(0)?.icon + ".png")
+        holder.description.text = data?.get(position)?.weather?.get(0)?.description
+        holder.date.text = getDateTime(data?.get(position)?.dt.toString())
+        holder.speed.text = data?.get(position)?.speed.toString()
     }
 
-    override fun getItemCount(): Int = dataSet.size
+    override fun getItemCount(): Int {
+        if (dataSet!= null )
+            return data!!.size
+        else return 0
+    }
 }

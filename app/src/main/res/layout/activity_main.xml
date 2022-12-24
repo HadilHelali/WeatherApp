@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <Spinner
         android:id="@+id/spinner"
@@ -20,13 +20,12 @@
 
     <WebView
         android:id="@+id/weatherImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="181dp"
+        android:layout_height="173dp"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/Temp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/country" />
 
@@ -47,8 +46,8 @@
 
     <TextView
         android:id="@+id/weatherInfo"
-        android:layout_width="235dp"
-        android:layout_height="48dp"
+        android:layout_width="221dp"
+        android:layout_height="36dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:textSize="30sp"
@@ -72,20 +71,20 @@
         android:id="@+id/pressure"
         android:layout_width="164dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="92dp"
         android:gravity="center"
         android:textColor="@color/purple_200"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Temp"
-        android:layout_width="152dp"
-        android:layout_height="74dp"
+        android:layout_width="148dp"
+        android:layout_height="57dp"
         android:layout_marginTop="36dp"
         android:gravity="center"
         android:textColor="@color/purple_500"
@@ -100,14 +99,14 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="GoToAc5"
         android:text="Go to activity 5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pressure"
-        app:layout_constraintVertical_bias="0.402"
-        android:onClick="GoToAc5"/>
+        app:layout_constraintVertical_bias="0.541" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
