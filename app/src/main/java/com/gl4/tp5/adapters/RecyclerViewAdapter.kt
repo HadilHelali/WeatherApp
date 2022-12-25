@@ -33,7 +33,7 @@ class recyclerViewAdapter(private val dataSet: ForecastResponse?) : RecyclerView
 
     private fun getDateTime(s: String): String? {
         try {
-            val sdf = SimpleDateFormat("MM/dd/yyyy")
+            val sdf = SimpleDateFormat("dd MMM")
             val netDate = Date(s.toLong()*1000)
             return sdf.format(netDate)
         } catch (e: Exception) {
@@ -50,7 +50,9 @@ class recyclerViewAdapter(private val dataSet: ForecastResponse?) : RecyclerView
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         print(data?.size)
         holder.weatherIcon.loadUrl("https://openweathermap.org/img/w/" + data?.get(position)?.weather?.get(0)?.icon + ".png")
-        holder.description.text = data?.get(position)?.weather?.get(0)?.description
+        holder.description.text = String.format("%.1f", (data?.get(position)?.temp?.max?.minus(
+            273.15
+        )))+" °C"
         holder.date.text = getDateTime(data?.get(position)?.dt.toString())
         holder.speed.text = data?.get(position)?.speed.toString()
     }

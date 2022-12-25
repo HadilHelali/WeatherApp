@@ -18,7 +18,7 @@ class MainViewModel : ViewModel() {
     init {
         getweather("Tunis")
     }
-    public fun getweather(ville : String){
+    fun getweather(ville : String){
         RetrofitHelper.retrofitService.getWeather(ville).enqueue(object :
             Callback<WeatherResponse>{
             override fun onResponse(

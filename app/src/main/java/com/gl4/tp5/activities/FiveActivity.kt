@@ -23,8 +23,6 @@ class FiveActivity : AppCompatActivity() {
         binding = ActivityFiveBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ville = intent.getStringExtra("ville").toString()
-        print("-------------------")
-        println(ville)
         model.getWeatherForecast(ville)
 
         model.Forecasts.observe( this){

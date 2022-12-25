@@ -4,109 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e2dfe5"
     tools:context=".activities.MainActivity">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="342dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/country"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
-
-    <WebView
-        android:id="@+id/weatherImage"
-        android:layout_width="181dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/Temp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country" />
-
-    <TextView
-        android:id="@+id/humidity"
-        android:layout_width="163dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="29dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="@color/purple_200"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/pressure"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherInfo"
-        app:layout_constraintVertical_bias="0.0" />
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="284dp">
 
-    <TextView
-        android:id="@+id/weatherInfo"
-        android:layout_width="221dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Temp" />
+        <Spinner
+            android:padding="10dp"
+            android:id="@+id/spinner"
+            android:layout_width="342dp"
+            android:layout_height="48dp" />
 
-    <TextView
-        android:id="@+id/country"
-        android:layout_width="197dp"
-        android:layout_height="62dp"
-        android:gravity="center"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@id/weatherImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-    <TextView
-        android:id="@+id/pressure"
-        android:layout_width="164dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="92dp"
-        android:gravity="center"
-        android:textColor="@color/purple_200"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/weatherInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5sp"
+                android:text="Info"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/Temp"
-        android:layout_width="148dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:textColor="@color/purple_500"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherImage" />
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="| Country"
+                android:textSize="30sp" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="GoToAc5"
-        android:text="Go to activity 5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pressure"
-        app:layout_constraintVertical_bias="0.541" />
+        <WebView
+            android:id="@+id/weatherImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/temp"></ImageView>
+
+            <TextView
+                android:id="@+id/Temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="temp"
+                android:textColor="@color/purple_500"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/pressure"></ImageView>
+
+            <TextView
+                android:id="@+id/pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5sp"
+                android:text="pressure"
+                android:textColor="#7986CB"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="247dp"
+                tools:layout_editor_absoluteY="603dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/humidity"></ImageView>
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5sp"
+                android:text="humidity"
+                android:textColor="#7986CB"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="248dp"
+                tools:layout_editor_absoluteY="567dp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_margin="40dp"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="forecast"
+            android:text="Forecasts"
+            tools:layout_editor_absoluteX="242dp"
+            tools:layout_editor_absoluteY="683dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

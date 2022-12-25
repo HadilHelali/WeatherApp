@@ -26,13 +26,8 @@ class FiveViewModel : ViewModel() {
                     call: Call<ForecastResponse>,
                     response: Response<ForecastResponse>
                 ) {
-                    println("on Success")
-                    println("isSuccessful :"+response.isSuccessful)
                     if(response.isSuccessful) {
                         currentForecasts.value = response.body()
-                        //Forecasts = currentForecasts
-                        println(currentForecasts.value)
-                        Log.d("ONSUCCESS" ,response.toString() )
                     }
                 }
 

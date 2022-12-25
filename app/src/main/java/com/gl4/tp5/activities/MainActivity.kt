@@ -48,21 +48,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
         // Create the observer which update the UI
-
         val weatherObserver = Observer<WeatherResponse> {
-            binding.country.text = it.name
-            println("---"+it.name)
-            //log.d("TAG", "---"+it.name)
+            binding.country.text = " | "+it.name
             binding.weatherInfo.text = it.weather.get(0).description
-            binding.Temp.text = it.main.temp.toString()+"°C"
-            binding.humidity.text = "Humidity : "+it.main.humidity.toString()
-            binding.pressure.text = "Pressure : "+it.main.pressure.toString()
-            binding.weatherImage.loadUrl("https://openweathermap.org/img/wn/" + it.weather.get(0).icon + "@4x.png")
+            var tmp : Double = it.main.temp - 273.15
+            (String.format("%.1f", tmp)+" °C").also { binding.Temp.text = it }
+            "Humidity : ${it.main.humidity}".also {binding.humidity.text = it }
+            ("Pressure : "+it.main.pressure.toString()).also { binding.pressure.text = it }
+            binding.weatherImage.loadUrl("https://openweathermap.org/img/wn/" + it.weather[0].icon + "@2x.png")
         }
        model.weather.observe(this,weatherObserver)
     }
 
-    fun GoToAc5(view: View) {
+    fun forecast(view: View) {
         val intent = Intent(this, FiveActivity::class.java )
         intent.putExtra("ville",selectedVille)
         startActivity(intent)
